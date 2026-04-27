@@ -24,6 +24,18 @@ public class ContentController {
         return response;
     }
 
+    @GetMapping("/posts/{id}")
+    @ApiOperation("获取帖子详情")
+    public Map<String, Object> getPost(
+            @ApiParam(value = "帖子ID", required = true) @PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("postId", id);
+        response.put("title", "测试帖子标题");
+        response.put("content", "这是帖子内容");
+        response.put("likeCount", 100);
+        return response;
+    }
+
     @DeleteMapping("/posts/{id}")
     @ApiOperation("删帖")
     public Map<String, Object> deletePost(
